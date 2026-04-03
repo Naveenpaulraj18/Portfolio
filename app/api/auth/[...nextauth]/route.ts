@@ -1,36 +1,5 @@
-// import NextAuth from "next-auth";
-// import GoogleProvider from "next-auth/providers/google";
-// import { NextAuthOptions } from "next-auth";
+import NextAuth from "next-auth";
+import { authOptions } from "../auth.config";
 
-// export const authOptions: NextAuthOptions = {
-//   providers: [
-//     GoogleProvider({
-//       clientId: process.env.GOOGLE_CLIENT_ID!,
-//       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
-//       authorization: {
-//         params: {
-//           scope: "https://www.googleapis.com/auth/drive.file",
-//           access_type: "offline",
-//           prompt: "consent",
-//         },
-//       },
-//     }),
-//   ],
-//   callbacks: {
-//     async jwt({ token, account }) {
-//       if (account) {
-//         token.accessToken = account.access_token;
-//         token.refreshToken = account.refresh_token;
-//       }
-//       return token;
-//     },
-//     async session({ session, token }) {
-//       session.accessToken = token.accessToken;
-//       return session;
-//     },
-//   },
-//   session: { strategy: "jwt" },
-// };
-
-// const handler = NextAuth(authOptions);
-// export { handler as GET, handler as POST };
+const handler = NextAuth(authOptions);
+export { handler as GET, handler as POST };

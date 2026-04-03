@@ -61,13 +61,12 @@ type DraggableAreaProps = {
 
 export default function DraggableArea({
   disableFolderUpload = false,
-  onFileChosen,
 }: DraggableAreaProps) {
   const folderInputRef = useRef<HTMLInputElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   const { uploadFiles } = useFileUpload();
   const { extractBatchWithProgress } = useBatchExtraction();
-  const { setProgress, updateFileStatus, updateFileId } = useUploadProgress();
+  const { setProgress, updateFileStatus } = useUploadProgress();
 
   const [accessToken, setAccessToken] = useState<string | null>(null);
   const [gsiLoaded, setGsiLoaded] = useState(false);
@@ -333,7 +332,7 @@ export default function DraggableArea({
     setIsPickerOpen(false);
     const files = Array.from(e.target.files || []);
     if (files.length > 0) {
-      const paths = files.map((f) => (f as any).webkitRelativePath || f.name);
+      const paths = files.map((f) => (f as File & { webkitRelativePath: string }).webkitRelativePath || f.name);
       handleFileDrop(files, paths);
     }
     e.target.value = "";

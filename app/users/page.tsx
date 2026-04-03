@@ -1,6 +1,4 @@
 import LandingPage from "../components/landingPage";
-import GoogleDrivePicker from "../components/GoogleDrivePicker";
-import { ViewTodo } from "./totdoview";
 
 export default function Page() {
   return (

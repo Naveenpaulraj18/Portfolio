@@ -1,16 +1,7 @@
 import { google } from "googleapis";
 import { getServerSession } from "next-auth";
-import { authOptions } from "../auth/[...nextauth]/route";
-import NextAuth, { DefaultSession } from "next-auth";
-declare module "next-auth" {
-  interface Session extends DefaultSession {
-    accessToken?: string;
-  }
+import { authOptions } from "../auth/auth.config";
 
-  interface JWT {
-    accessToken?: string;
-  }
-}
 export async function GET() {
   const session = await getServerSession(authOptions);
 

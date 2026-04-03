@@ -1,6 +1,6 @@
 "use client"; // important in Next.js 13 app directory
 
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import useDrivePicker from "react-google-drive-picker";
 
 interface FileObject {
